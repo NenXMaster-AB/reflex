@@ -136,6 +136,12 @@ pip install reflex-jev
 export TYPESAFE_API_KEY="sk-..."
 ```
 
+Or from source:
+
+```bash
+pip install git+https://github.com/NenXMaster-AB/reflex.git
+```
+
 Requires Python 3.10+. Pin the model if you tune thresholds against it — `jev-latest`
 changes without notice:
 
