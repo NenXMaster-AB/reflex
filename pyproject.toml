@@ -11,6 +11,12 @@ requires-python = ">=3.10"
 license = { text = "MIT" }
 dependencies = ["typesafe-sdk>=0.7.1"]
 
+[project.urls]
+Homepage = "https://github.com/NenXMaster-AB/reflex"
+Repository = "https://github.com/NenXMaster-AB/reflex"
+Issues = "https://github.com/NenXMaster-AB/reflex/issues"
+Changelog = "https://github.com/NenXMaster-AB/reflex/commits/main"
+
 [project.optional-dependencies]
 dev = ["pytest>=8", "pytest-asyncio>=0.24"]
 
