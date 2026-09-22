@@ -125,8 +125,9 @@ a wide margin instead of 0.06. It costs a second request, but one issued in the 
 so it runs concurrently, and carrying only the untrusted text, so it is very cheap. The
 guard only runs at all when you actually wrap something.
 
-Above the threshold it warns; `Reflex(guard="raise")` raises `InjectionSuspected`, and
-`guard=False` disables it.
+Above the threshold it warns; `Reflex(guard="raise")` raises `InjectionSuspected`,
+`guard="flag"` records the probability silently for callers that surface it themselves,
+and `guard=False` disables it.
 
 ## Install
 

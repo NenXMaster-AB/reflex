@@ -22,7 +22,7 @@ from .state import (
 )
 
 LintPolicy = Literal["off", "warn", "raise"]
-GuardPolicy = Literal[False, "auto", "raise"]
+GuardPolicy = Literal[False, "flag", "auto", "raise"]
 
 #: Asked automatically against state that contains :func:`untrusted` content.
 #: Jev's model card is explicit that it does not treat state as hostile by
@@ -141,7 +141,10 @@ class View:
     def _apply_guard(self, decision: Decision) -> None:
         assert isinstance(decision, NoulDecision)
         self.guard = decision
-        if decision.p < self._reflex.guard_threshold:
+        if decision.p < self._reflex.guard_threshold or self._reflex.guard == "flag":
+            # "flag" records the probability on the view and says nothing: for
+            # callers that surface the signal themselves and would otherwise
+            # report it twice.
             return
         if self._reflex.guard == "raise":
             raise InjectionSuspected(decision.p, self._reflex.guard_threshold)
